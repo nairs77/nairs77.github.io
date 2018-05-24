@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>How to use correctly &#39;self&#39; keyword in Swift | MrAble&#39;s Dash this way and Rush that blah blah</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="swift" />
+    
+    <meta name="description" content="원본 - How to use correctly ‘self’ keyword in Swift - Dmitri Pavlutin Blog Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. 주로 class나 structure 또는 enumer">
+<meta name="keywords" content="swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use correctly &#39;self&#39; keyword in Swift">
+<meta property="og:url" content="http://nairs77.github.io/2017/06/21/20180210-self-keyword-in-swift/index.html">
+<meta property="og:site_name" content="MrAble&#39;s Dash this way and Rush that blah blah">
+<meta property="og:description" content="원본 - How to use correctly ‘self’ keyword in Swift - Dmitri Pavlutin Blog Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. 주로 class나 structure 또는 enumer">
+<meta property="og:locale" content="ko">
+<meta property="og:image" content="http://code.visualstudio.com/opengraphimg/opengraph-blog.png">
+<meta property="og:updated_time" content="2018-05-24T15:53:06.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to use correctly &#39;self&#39; keyword in Swift">
+<meta name="twitter:description" content="원본 - How to use correctly ‘self’ keyword in Swift - Dmitri Pavlutin Blog Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. 주로 class나 structure 또는 enumer">
+<meta name="twitter:image" content="http://code.visualstudio.com/opengraphimg/opengraph-blog.png">
+    
+
+    
+        <link rel="alternate" href="/" title="MrAble&#39;s Dash this way and Rush that blah blah" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Records are stronger than memory.</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categoriesls/Tools/">Tools</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categoriesls/Tools/Visual-Studio-Code/">Visual Studio Code</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categoriesls/iOS/">iOS</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categoriesls/iOS/swift/">swift</a></li></ul></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categoriesls/iOS/">iOS</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categoriesls/iOS/swift/">swift</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-20180210-self-keyword-in-swift" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        How to use correctly &#39;self&#39; keyword in Swift
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2017/06/21/20180210-self-keyword-in-swift/" class="article-date">
+            <time datetime="2017-06-21T09:20:58.000Z" itemprop="datePublished">2017-06-21</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/swift/">swift</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>원본 - <a href="https://dmitripavlutin.com/how-to-use-correctly-self-keyword-in-swift/" target="_blank" rel="noopener">How to use correctly ‘self’ keyword in Swift - Dmitri Pavlutin Blog</a></p>
+<p>Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. Swift에서 ‘self’는 인스턴스 자신을 가리키는 아주 특별한 property이다. 주로 class나 structure 또는 enumeration의 초기화(생성자)나 method 호출에 사용한다. 명확하고 간결함을 추구하는 것을 모토로 삼기에는 아주 훌륭한 전략이다. 우선 대부분의 경우에 아주 효율적이고, 코드의 가독성을 높이는데 도와주나, 코드가 아주 짧아진다.</p>
+<p>self에 이 모토를 적용하면, 아래와 같은 2가지의 모순이 발생한다.</p>
+<p>명확성 전략을 적용하고 항상 인스턴스 속성 인 self.property에 액세스하려면 항상 자체를 유지해야합니까?<br>이 물음에 대답으로, Swift는 이 모든 것을 허용하고 심지어 self 키워드를 할 수 있다면 생략하는 것을 권장한다. self를 반드시 사용해야 할 곳과 선택적으로 사용할 것에 대해서 다루고자 한다.<br>자, Swift의 self에 키워드에 대한 검토를 해보자</p>
+<h3 id="Access-instance-properties-and-methods"><a href="#Access-instance-properties-and-methods" class="headerlink" title="Access instance properties and methods"></a>Access instance properties and methods</h3><p>예를 들면 아래 Weather 구조체에서는 초기화와 isDayForWalk() 메소드에 self를 사용했다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">struct Weacher &#123;</span><br><span class="line">    let windSpeed: Int          //miles per hour</span><br><span class="line">    let chanceOfRain: Int       // percent</span><br><span class="line"></span><br><span class="line">    init(winSpeed: Int, chanceOfRain: Int) &#123;</span><br><span class="line">        self.winSpeed = winSpeed</span><br><span class="line">        self.chanceOfRain = chanceOfRain</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    func isDayForWalk() -&gt; Bool &#123;</span><br><span class="line">        let comfortableWindSpeed = 5</span><br><span class="line">        let acceptableChanceOfRain = 30</span><br><span class="line">        return self.windSpeed &lt;= comfortableWinSpped &amp;&amp; self.chanceOfRain &lt;= acceptableChanceOfRain</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// A nice day for a walk</span><br><span class="line">let niceWeather = Weather(winSpeed: 4, chanceOfRain: 250)</span><br><span class="line">print(niceWeather.isDayForWalk()) // =&gt; true</span><br></pre></td></tr></table></figure>
+<p>init(winSpeed: chanceOfRain:)과 isDayForWalk 내부의 <code>self</code>는 Weather 구조체 instance를 기리킨다. Weather구조체의 self.windSpeed와 self.chanceOfRain를 접근(getter, setting)할 수 있는 것이다.</p>
+<p>구조체는 전혀 문제가 없다.</p>
+<p>하지만, 매번 self property에 접근하는 것은 좀 과한 것 같다. 구조체의 생성자와 메소드도 충분한 context를 제공한다. 모든 것들은 구조체 내부에서 일어나고 있다. <code>self</code>를 제공해도 될까요?</p>
+<p>소개에서 언급한 것 처럼, Swift는 가능하다면 <code>self</code>를 생략해서 사용하길 희망한다. </p>
+<p>앞에서 다룬 예제를 보고, isDayForWalk() 메소드 내에서 <code>self</code>를 지워보길 바란다. 아래 코드를 참고하시길…</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct Weather &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://nairs77.github.io/2017/06/21/20180210-self-keyword-in-swift/" data-id="cjhkpwxml0000g73wn4kusc66" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/19/20170719-getting-started-vscode/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            Visual Studio Code 알아보기
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/06/21/20170621-python-with-vscode/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">Python, Visual Studio Code로 개발하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/21/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/21/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2017-07-20T17:16:46.000Z" itemprop="datePublished">2017-07-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/07/19/20170719-getting-started-vscode/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2017/07/19/20170719-getting-started-vscode/" class="title">Visual Studio Code 알아보기</a></p>
+                            <p class="item-date"><time datetime="2017-07-19T01:52:49.000Z" itemprop="datePublished">2017-07-19</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/21/20180210-self-keyword-in-swift/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://code.visualstudio.com/opengraphimg/opengraph-blog.png)" alt="How to use correctly &#39;self&#39; keyword in Swift" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categoriesls/iOS/">iOS</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categoriesls/iOS/swift/">swift</a></p>
+                            <p class="item-title"><a href="/2017/06/21/20180210-self-keyword-in-swift/" class="title">How to use correctly &#39;self&#39; keyword in Swift</a></p>
+                            <p class="item-date"><time datetime="2017-06-21T09:20:58.000Z" itemprop="datePublished">2017-06-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/06/21/20170621-python-with-vscode/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://code.visualstudio.com/opengraphimg/opengraph-blog.png)" alt="Python, Visual Studio Code로 개발하기" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categoriesls/Tools/">Tools</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categoriesls/Tools/Visual-Studio-Code/">Visual Studio Code</a></p>
+                            <p class="item-title"><a href="/2017/06/21/20170621-python-with-vscode/" class="title">Python, Visual Studio Code로 개발하기</a></p>
+                            <p class="item-date"><time datetime="2017-06-21T09:20:58.000Z" itemprop="datePublished">2017-06-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categoriesls/Tools/">Tools</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categoriesls/Tools/Visual-Studio-Code/">Visual Studio Code</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categoriesls/iOS/">iOS</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categoriesls/iOS/swift/">swift</a><span class="category-list-count">1</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">7월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/vscode/" style="font-size: 20px;">vscode</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 nairs77</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://nairs77.github.io/2017/06/21/20180210-self-keyword-in-swift/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
